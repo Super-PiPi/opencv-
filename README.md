@@ -97,32 +97,41 @@ try:
         
   矩形2中心线上点 (x2 + w2/2, y2):
   
+  
   point3 = [rect2[0] + width_array[point_near[1]] / 2, rect2[1]]
+  
   
   矩形2中心线下点 (x2 + w2/2, y2 + h2):
   
+  
   point4 = [rect2[0] + width_array[point_near[1]] / 2, rect2[1] + height_array[point_near[1]]]
         
-        # 打印坐标点（调试用）
+打印坐标点（调试用）
+        
         print(point1, point2, point3, point4)
         
-        # 构建四边形顶点：point1 -> point2 -> point4 -> point3
+构建四边形顶点：point1 -> point2 -> point4 -> point3
+        
         pts = np.array([point1, point2, point4, point3], np.int32)
-        # 重塑为OpenCV所需格式 (n,1,2)
+
+重塑为OpenCV所需格式 (n,1,2)
+        
         polygon = pts.reshape((-1, 1, 2)).astype(np.int32)
         
-        # 在原始图像上绘制绿色四边形
+在原始图像上绘制绿色四边形
+        
         cv2.polylines(img, [polygon], True, (0, 255, 0), 2)
         
-    except Exception as e:
-        # 异常处理（如索引错误）
+except Exception as e:
+        异常处理（如索引错误）
         print(f"Error: {e}")
         continue
     
-    # 显示处理结果
+显示处理结果:
+    
     cv2.imshow('name', img)
     
-    # 按'q'键退出
+按'q'键退出:
     if cv2.waitKey(45) & 0xFF == ord('q'):
         break
 

@@ -65,8 +65,8 @@
   2. 高度>图像高度的10%
   3. 高度>宽度（冗余条件）
 
-          try： 
-          if h / w >= 2 and h / whole_h > 0.1 and h > w:
+    try： 
+    if h / w >= 2 and h / whole_h > 0.1 and h > w:
 
   将符合条件的高宽坐标存起来：
 
@@ -116,16 +116,19 @@
         
 计算四个关键点（矩形中心线的上下端点）：
 
-        矩形1中心线上点 (x1 + w1/2, y1):
-        point1 = [rect1[0] + width_array[point_near[0]] / 2, rect1[1]]
-        矩形1中心线下点 (x1 + w1/2, y1 + h1):
-        point2 = [rect1[0] + width_array[point_near[0]] / 2, rect1[1] + height_array[point_near[0]]]
+  矩形1中心线上点 (x1 + w1/2, y1)
         
-矩形2中心线上点 (x2 + w2/2, y2):
+    point1 = [rect1[0] + width_array[point_near[0]] / 2, rect1[1]]
+        
+  矩形1中心线下点 (x1 + w1/2, y1 + h1)
+        
+    point2 = [rect1[0] + width_array[point_near[0]] / 2, rect1[1] + height_array[point_near[0]]]
+        
+矩形2中心线上点 (x2 + w2/2, y2)
   
-        point3 = [rect2[0] + width_array[point_near[1]] / 2, rect2[1]]
+    point3 = [rect2[0] + width_array[point_near[1]] / 2, rect2[1]]
   
-矩形2中心线下点 (x2 + w2/2, y2 + h2):
+矩形2中心线下点 (x2 + w2/2, y2 + h2)
   
     point4 = [rect2[0] + width_array[point_near[1]] / 2, rect2[1] + height_array[point_near[1]]]
         

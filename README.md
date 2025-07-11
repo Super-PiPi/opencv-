@@ -1,11 +1,15 @@
-# opencv-
-打开电脑中指定的视频文件：video = cv2.VideoCapture("/home/xujiahua/zhuang jia ban/zhuangjiaban1.mp4")
+用python-opencv框选视频中的装甲板
+=
+打开电脑中指定的视频文件：
+                 
+    video = cv2.VideoCapture("/home/xujiahua/zhuang jia ban/zhuangjiaban1.mp4")
 
 通过循环来不断地处理视频中的每一帧：
            
     while True:
 
 目标检测
+=
 读取每一帧：
 
     ret, img = video.read()   
@@ -30,6 +34,8 @@
 
     whole_h, whole_w = binary.shape[:2]
 
+轮廓筛选
+=
 查找轮廓（RETR_TREE获取层级关系，CHAIN_APPROX_NONE保存所有轮廓点）
    
     contours, hierarchy = cv2.findContours(
@@ -73,6 +79,8 @@
     except:
     continue  
     
+配对逻辑
+=
 寻找面积最接近的两个矩形：
    
     存储最接近的两个矩形的索引 point_near = [0, 0] 
@@ -82,6 +90,7 @@
                
         for i in range(len(width_array) - 1):
         for j in range(i + 1, len(width_array)):
+
 计算面积绝对差：
     
     area_diff = abs(width_array[i] * height_array[i] - width_array[j] * height_array[j])
@@ -97,6 +106,8 @@
            point_near[1] = j
                 
 
+四边形绘制
+=
 获取选中的两个矩形的左上角坐标    
 
         try:
